@@ -7,8 +7,8 @@ import org.apache.commons.csv.CSVRecord;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,7 +35,6 @@ public class JobData {
         loadData();
 
         ArrayList<String> values = new ArrayList<>();
-
         for (HashMap<String, String> row : allJobs) {
             String aValue = row.get(field);
 
@@ -43,8 +42,8 @@ public class JobData {
                 values.add(aValue);
             }
         }
-
-        return values;
+        ArrayList<String> valueCopy = (ArrayList<String>) values.clone();
+        return valueCopy;
     }
 
     public static ArrayList<HashMap<String, String>> findAll() {
